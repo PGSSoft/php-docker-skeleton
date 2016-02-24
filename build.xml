@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="demo" default="build">
+    <target name="build"
+            depends="list,-check-failure"
+    />
+
+    <target name="list"
+            unless="list.done"
+            description="List file structure">
+        <exec executable="ls" resultproperty="result.list" taskname="list">
+            <arg value="-l"/>
+            <arg value="-a"/>
+        </exec>
+
+        <property name="list.done" value="true"/>
+    </target>
+
+    <target name="-check-failure">
+        <fail message="Build did not finish successfully">
+            <condition>
+                <or>
+                    <not>
+                        <equals arg1="${result.list}" arg2="0"/>
+                    </not>
+                </or>
+            </condition>
+        </fail>
+    </target>
+</project>
+

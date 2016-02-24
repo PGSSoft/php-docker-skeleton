@@ -1,0 +1,7 @@
+/nbproject/*
+/.idea/*
+/sys$command
+/data/
+/vendor/
+/.composer/
+/.bash_history
