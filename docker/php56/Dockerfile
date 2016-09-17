@@ -29,7 +29,7 @@ RUN apt-get -qq update --fix-missing && \
         && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos \
-    && docker-php-ext-install iconv intl mysqli gd mbstring pdo_mysql xsl opcache imap
+    && docker-php-ext-install zip iconv intl mysqli gd mbstring pdo_mysql xsl opcache imap
 
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
