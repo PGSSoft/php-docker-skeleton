@@ -15,7 +15,7 @@ echo -e "\nIMAGE VERSION: $APP_NAME:$APP_VERSION\n";
 function buildImages {
     NAME=$1
     VERSION=$2
-    USERID=${$3:-1000}
+    USERID=${3:-1000}
 
     docker build -t "${NAME}:${VERSION}-php7" --build-arg USERID="$USERID" docker/php7
     docker build -t "${NAME}:${VERSION}-php7xdebug" --build-arg USERID="$USERID" docker/php7xdebug

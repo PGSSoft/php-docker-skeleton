@@ -1,0 +1,11 @@
+language: bash
+services: docker
+
+env:
+  - PROJECT_COMMAND=build
+  - PROJECT_COMMAND=build-coverage
+  - PROJECT_COMMAND=build-56
+
+script:
+  - ./docker.sh build-images
+  - ./docker.sh "${PROJECT_COMMAND}"
