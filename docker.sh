@@ -11,6 +11,7 @@ export APP_VERSION=$(echo $(cat composer.json | grep version | head -1 | awk -F:
 export USERID=$(id -u);
 echo "User ID: $USERID";
 echo -e "\nIMAGE VERSION: $APP_NAME:$APP_VERSION\n";
+declare -i BUILD_STATUS
 
 function buildImages {
     NAME=$1
@@ -80,9 +81,9 @@ case $TASK_NAME in
     'run-coverage')
         runInBackground "${APP_NAME}:${APP_VERSION}-php7xdebug"
         ;;
-
-
 esac
 
+BUILD_STATUS=$?
+
 echo -e "Script finished with exit code: ${BUILD_STATUS}";
-exit ${BUILD_STATUS};
+exit $BUILD_STATUS;
