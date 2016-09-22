@@ -23,6 +23,8 @@ function buildImages {
     docker build -t "${NAME}:${VERSION}-php56" --build-arg USERID="$USERID" docker/php56
     docker build -t "${NAME}:${VERSION}-node" docker/node
     docker build -t "${NAME}:${VERSION}-nginx" docker/nginx
+    docker images
+    docker ps -a
 }
 
 function runBuild {
