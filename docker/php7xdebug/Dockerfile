@@ -18,7 +18,7 @@ RUN apt-get -qq update --fix-missing && \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         libpng12-dev \
-        libxml2-dev
+        libxml2-dev \
         libxslt1-dev \
         libc-client-dev \
         libkrb5-dev \
