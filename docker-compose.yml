@@ -19,10 +19,3 @@ mysql:
   environment:
     MYSQL_ROOT_PASSWORD: ${PROJECT_NAME}
     MYSQL_DATABASE: ${PROJECT_NAME}
-
-node:
-  image: "${APP_NAME}:${APP_VERSION}-node"
-  entrypoint: /bin/bash
-  command: /entrypoint.sh default
-  volumes_from:
-    - data

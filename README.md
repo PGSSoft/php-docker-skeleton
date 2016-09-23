@@ -8,7 +8,7 @@
 
 Maintainer: [Michal Kruczek](https://github.com/partikus)
 
-This stack uses: [nginx](https://hub.docker.com/_/nginx/) (lastest), [php-fpm](https://hub.docker.com/_/php/) (5.6, 7.0), [nodejs](https://hub.docker.com/_/node/) (gulp), [mysql](https://hub.docker.com/_/mysql/) (5.7).
+This stack uses: [nginx](https://hub.docker.com/_/nginx/) (lastest), [php-fpm](https://hub.docker.com/_/php/) (5.6, 7.0), [mysql](https://hub.docker.com/_/mysql/) (5.7).
 
 This skeleton can be used to developing app locally or to running tests in Jenkins etc.
 

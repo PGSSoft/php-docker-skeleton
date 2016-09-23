@@ -21,7 +21,6 @@ function buildImages {
     docker build -t "${NAME}:${VERSION}-php7" --build-arg USERID="$USERID" docker/php7
     docker build -t "${NAME}:${VERSION}-php7xdebug" --build-arg USERID="$USERID" docker/php7xdebug
     docker build -t "${NAME}:${VERSION}-php56" --build-arg USERID="$USERID" docker/php56
-    docker build -t "${NAME}:${VERSION}-node" docker/node
     docker build -t "${NAME}:${VERSION}-nginx" docker/nginx
 }
 
@@ -45,7 +44,6 @@ function runInBackground {
     export IMAGE_VERSION=$1
     docker-compose -f docker-compose.yml -f docker-compose.local.yml kill > /dev/null 2>&1
     docker-compose -f docker-compose.yml -f docker-compose.local.yml rm -f -v > /dev/null 2>&1
-    docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d node
     docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d nginx
     docker-compose -f docker-compose.yml -f docker-compose.local.yml run --entrypoint /bin/bash php
     docker-compose -f docker-compose.yml -f docker-compose.local.yml kill > /dev/null 2>&1

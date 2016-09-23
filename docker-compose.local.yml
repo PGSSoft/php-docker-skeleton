@@ -10,9 +10,6 @@ mysql:
   volumes:
     - ./data:/var/lib/mysql
 
-node:
-  command: /entrypoint.sh watch
-
 nginx:
   image: "${APP_NAME}:${APP_VERSION}-nginx"
   ports:
