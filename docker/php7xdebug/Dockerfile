@@ -1,4 +1,4 @@
-FROM php:7-fpm
+FROM php:7.0-fpm
 
 MAINTAINER Michał Kruczek <mkruczek@pgs-soft.com>
 
