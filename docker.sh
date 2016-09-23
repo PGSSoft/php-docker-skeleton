@@ -11,11 +11,12 @@ export APP_VERSION=$(echo $(cat composer.json | grep version | head -1 | awk -F:
 export USERID=$(id -u);
 echo "User ID: $USERID";
 echo -e "\nIMAGE VERSION: $APP_NAME:$APP_VERSION\n";
+declare -i BUILD_STATUS=0;
 
 function buildImages {
     NAME=$1
     VERSION=$2
-    USERID=${$3:-1000}
+    USERID=${3:-1000}
 
     docker build -t "${NAME}:${VERSION}-php7" --build-arg USERID="$USERID" docker/php7
     docker build -t "${NAME}:${VERSION}-php7xdebug" --build-arg USERID="$USERID" docker/php7xdebug
@@ -27,15 +28,15 @@ function buildImages {
 function runBuild {
     export IMAGE_VERSION=$1
     docker-compose up node
-    BUILD_STATUS=$(docker-compose up php)
+    BUILD_OUTPUT=$(docker-compose up php)
     docker-compose kill > /dev/null 2>&1
     docker-compose rm -f -v > /dev/null 2>&1
 
-    echo -e "$BUILD_STATUS";
-    if echo "$BUILD_STATUS" | grep -q "exited with code 0"; then
-        return 0;
+    echo -e "$BUILD_OUTPUT";
+    if echo "$BUILD_OUTPUT" | grep -q "exited with code 0"; then
+        BUILD_STATUS=0;
     else
-        return 1;
+        BUILD_STATUS=1;
     fi
 
 }
@@ -80,9 +81,7 @@ case $TASK_NAME in
     'run-coverage')
         runInBackground "${APP_NAME}:${APP_VERSION}-php7xdebug"
         ;;
-
-
 esac
 
 echo -e "Script finished with exit code: ${BUILD_STATUS}";
-exit ${BUILD_STATUS};
+exit $BUILD_STATUS;

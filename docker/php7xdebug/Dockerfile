@@ -1,4 +1,4 @@
-FROM php:7-fpm
+FROM php:7.0-fpm
 
 MAINTAINER Michał Kruczek <mkruczek@pgs-soft.com>
 
@@ -18,7 +18,7 @@ RUN apt-get -qq update --fix-missing && \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         libpng12-dev \
-        libxml2-dev
+        libxml2-dev \
         libxslt1-dev \
         libc-client-dev \
         libkrb5-dev \
@@ -32,7 +32,7 @@ COPY docker-php-pecl-install /usr/local/bin/
 
 RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos \
     && docker-php-ext-install iconv intl mysqli gd mbstring pdo_mysql xsl opcache imap \
-    && docker-php-pecl-install xdebug-2.4.0RC4
+    && docker-php-pecl-install zip xdebug-2.4.0RC4
 
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer

@@ -1,0 +1,16 @@
+language: bash
+services: docker
+
+env:
+  - PROJECT_COMMAND=build
+  - PROJECT_COMMAND=build-coverage
+  - PROJECT_COMMAND=build-56
+
+before_script:
+  - env | sort
+  - if [[ "$PROJECT_COMMAND" != "build-56" ]]; then docker pull php:7.0-fpm; fi;
+  - ./docker.sh build-images
+  - docker images
+
+script:
+  - ./docker.sh "${PROJECT_COMMAND}"
