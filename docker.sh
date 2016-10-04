@@ -13,21 +13,49 @@ echo "User ID: $USERID";
 echo -e "\nIMAGE VERSION: $APP_NAME:$APP_VERSION\n";
 declare -i BUILD_STATUS=0;
 
+function imageExists {
+    IMAGE_NAME=$1
+    if docker history -q "$IMAGE_NAME" > /dev/null 2>&1; then
+        echo - "$IMAGE_NAME already exist"
+        return 1;
+    fi
+
+    return 0;
+}
+
 function buildImages {
     NAME=$1
     VERSION=$2
     USERID=${3:-1000}
+    PHP=${4-:"all"}
 
-    parallel "bash -c " ::: \
-        "docker build -t ${NAME}:${VERSION}-php7 --build-arg USERID="$USERID" docker/php7" \
-        "docker build -t ${NAME}:${VERSION}-php7xdebug --build-arg USERID=$USERID docker/php7xdebug" \
-        "docker build -t ${NAME}:${VERSION}-php56 --build-arg USERID=$USERID docker/php56" \
-        "docker build -t ${NAME}:${VERSION}-nginx docker/nginx"
+    COMMANDS=()
+
+    imageExists "${NAME}:${VERSION}-php56"
+    if [[ $? == 0 ]] && [[ "$PHP" == "php56" || "$PHP" == "all" ]]; then
+        COMMANDS+=("docker build -t ${NAME}:${VERSION}-php56 --build-arg USERID=$USERID docker/php56")
+    fi
+
+    imageExists "${NAME}:${VERSION}-php7"
+    if [[ $? == 0 ]] && [[ "$PHP" == "php7" || "$PHP" == "all" ]]; then
+        COMMANDS+=("docker build -t ${NAME}:${VERSION}-php7 --build-arg USERID=$USERID docker/php7")
+    fi
+
+    imageExists "${NAME}:${VERSION}-php7xdebug"
+    if [[ $? == 0 ]] && [[ "$PHP" == "php7xdebug" || "$PHP" == "all" ]]; then
+        COMMANDS+=("docker build -t ${NAME}:${VERSION}-php7xdebug --build-arg USERID=$USERID docker/php7xdebug")
+    fi
+
+    imageExists "${NAME}:${VERSION}-nginx"
+    if [[ $? == 0 ]]; then
+        COMMANDS+=("docker build -t ${NAME}:${VERSION}-nginx docker/nginx")
+    fi
+
+    parallel -k ::: "${COMMANDS[@]}"
 }
 
 function runBuild {
     export IMAGE_VERSION=$1
-    docker-compose up node
     BUILD_OUTPUT=$(docker-compose up php)
     docker-compose kill > /dev/null 2>&1
     docker-compose rm -f -v > /dev/null 2>&1
@@ -63,21 +91,26 @@ fi
 
 case $TASK_NAME in
     'build-images')
-        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}"
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "all"
         ;;
     'build')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7"
         runBuild "${APP_NAME}:${APP_VERSION}-php7"
         ;;
     'build-coverage')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7xdebug"
         runBuild "${APP_NAME}:${APP_VERSION}-php7xdebug"
         ;;
     'build-56')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php56"
         runBuild "${APP_NAME}:${APP_VERSION}-php56"
         ;;
     'run')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7"
         runInBackground "${APP_NAME}:${APP_VERSION}-php7"
         ;;
     'run-coverage')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7xdebug"
         runInBackground "${APP_NAME}:${APP_VERSION}-php7xdebug"
         ;;
 esac
