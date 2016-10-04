@@ -7,6 +7,8 @@ env:
   - PROJECT_COMMAND=build-56
 
 before_script:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq parallel
   - env | sort
   - if [[ "$PROJECT_COMMAND" != "build-56" ]]; then docker pull php:7.0-fpm; fi;
   - ./docker.sh build-images
