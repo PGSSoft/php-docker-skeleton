@@ -35,7 +35,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 
 COPY php.ini /usr/local/etc/php
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 VOLUME /var/www
 WORKDIR /var/www
