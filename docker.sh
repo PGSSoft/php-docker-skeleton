@@ -69,8 +69,8 @@ function runInBackground {
     export IMAGE_VERSION=$1
     docker-compose -f docker-compose.yml -f docker-compose.local.yml kill > /dev/null 2>&1
     docker-compose -f docker-compose.yml -f docker-compose.local.yml rm -f -v > /dev/null 2>&1
-    docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d nginx
-    docker-compose -f docker-compose.yml -f docker-compose.local.yml exec -it php bash
+    docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d nginx php mysql
+    docker-compose -f docker-compose.yml -f docker-compose.local.yml exec php bash
     docker-compose -f docker-compose.yml -f docker-compose.local.yml kill > /dev/null 2>&1
     docker-compose -f docker-compose.yml -f docker-compose.local.yml rm -f -v > /dev/null 2>&1
 }
