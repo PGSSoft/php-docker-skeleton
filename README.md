@@ -12,7 +12,7 @@ This stack uses: [nginx](https://hub.docker.com/_/nginx/) (lastest), [php-fpm](h
 
 This skeleton can be used to developing app locally or to running tests in Jenkins etc.
 
-1. Build docker images running ``./docker.sh build-images``
+1. Build docker images running ``./docker.sh build-images``. Image versioning is based on `version` from `composer.json`
 2. Running local dev env: ``./docker.sh run`` Domain is set based on ``.project_name``, by default ``http://demo.dev:8000``
 3. Running tests on PHP 7.0: ``./docker.sh build``
 4. Running tests on PHP 7.0 with CodeCoverage(include xdebug): ``./docker.sh build-coverage``

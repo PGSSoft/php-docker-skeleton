@@ -18,10 +18,11 @@ function buildImages {
     VERSION=$2
     USERID=${3:-1000}
 
-    docker build -t "${NAME}:${VERSION}-php7" --build-arg USERID="$USERID" docker/php7
-    docker build -t "${NAME}:${VERSION}-php7xdebug" --build-arg USERID="$USERID" docker/php7xdebug
-    docker build -t "${NAME}:${VERSION}-php56" --build-arg USERID="$USERID" docker/php56
-    docker build -t "${NAME}:${VERSION}-nginx" docker/nginx
+    parallel "bash -c " ::: \
+        "docker build -t ${NAME}:${VERSION}-php7 --build-arg USERID="$USERID" docker/php7" \
+        "docker build -t ${NAME}:${VERSION}-php7xdebug --build-arg USERID=$USERID docker/php7xdebug" \
+        "docker build -t ${NAME}:${VERSION}-php56 --build-arg USERID=$USERID docker/php56" \
+        "docker build -t ${NAME}:${VERSION}-nginx docker/nginx"
 }
 
 function runBuild {
