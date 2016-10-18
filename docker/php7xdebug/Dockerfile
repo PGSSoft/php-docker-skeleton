@@ -24,8 +24,6 @@ RUN apt-get -qq update --fix-missing && \
         libkrb5-dev \
         cloc \
         git-core \
-        default-jdk \
-        ant \
         && rm -rf /var/lib/apt/lists/*
 
 COPY docker-php-pecl-install /usr/local/bin/
@@ -36,6 +34,9 @@ RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos \
 
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
+
+RUN pear channel-discover pear.phing.info && \
+    pear install --alldeps phing/phing
 
 COPY php.ini /usr/local/etc/php
 COPY entrypoint.sh /entrypoint.sh
