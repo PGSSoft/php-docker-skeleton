@@ -29,29 +29,25 @@ function buildImages {
     USERID=${3:-1000}
     PHP=${4-:"all"}
 
-    COMMANDS=()
-
     imageExists "${NAME}:${VERSION}-php56"
     if [[ $? == 0 ]] && [[ "$PHP" == "php56" || "$PHP" == "all" ]]; then
-        COMMANDS+=("docker build -t ${NAME}:${VERSION}-php56 --build-arg USERID=$USERID docker/php56")
+        docker build -t "${NAME}:${VERSION}-php56" --build-arg USERID="$USERID" docker/php56
     fi
 
     imageExists "${NAME}:${VERSION}-php7"
     if [[ $? == 0 ]] && [[ "$PHP" == "php7" || "$PHP" == "all" ]]; then
-        COMMANDS+=("docker build -t ${NAME}:${VERSION}-php7 --build-arg USERID=$USERID docker/php7")
+        docker build -t "${NAME}:${VERSION}-php7" --build-arg USERID="$USERID" docker/php7
     fi
 
     imageExists "${NAME}:${VERSION}-php7xdebug"
     if [[ $? == 0 ]] && [[ "$PHP" == "php7xdebug" || "$PHP" == "all" ]]; then
-        COMMANDS+=("docker build -t ${NAME}:${VERSION}-php7xdebug --build-arg USERID=$USERID docker/php7xdebug")
+        docker build -t "${NAME}:${VERSION}-php7xdebug" --build-arg "USERID=$USERID" docker/php7xdebug
     fi
 
     imageExists "${NAME}:${VERSION}-nginx"
     if [[ $? == 0 ]]; then
-        COMMANDS+=("docker build -t ${NAME}:${VERSION}-nginx docker/nginx")
+        docker build -t "${NAME}:${VERSION}-nginx" docker/nginx
     fi
-
-    parallel -k ::: "${COMMANDS[@]}"
 }
 
 function runBuild {
