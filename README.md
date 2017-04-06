@@ -14,9 +14,11 @@ This skeleton can be used to developing app locally or to running tests in Jenki
 
 1. Build docker images running ``./docker.sh build-images``. Image versioning is based on `version` from `composer.json`
 2. Running local dev env: ``./docker.sh run`` Domain is set based on ``.project_name``, by default ``http://demo.dev:8000``
-3. Running tests on PHP 7.0: ``./docker.sh build``
-4. Running tests on PHP 7.0 with CodeCoverage(include xdebug): ``./docker.sh build-coverage``
-5. Running tests on PHP 5.6: ``./docker.sh build-56``
+3. Running tests on PHP 7.1: ``./docker.sh build``
+4. Running tests on PHP 7.1 with CodeCoverage(include xdebug): ``./docker.sh build-coverage``
+5. Running tests on PHP 7.0: ``./docker.sh build-7``
+6. Running tests on PHP 7.0 with CodeCoverage(include xdebug): ``./docker.sh build-coverage-7``
+7. Running tests on PHP 5.6: ``./docker.sh build-56``
 
 ## Enjoy!
 
