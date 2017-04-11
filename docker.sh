@@ -154,7 +154,7 @@ case $TASK_NAME in
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7"
         runInBackground "${APP_NAME}:${APP_VERSION}-php7"
         ;;
-    'run-coverage-7')
+    'run-7-coverage')
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7xdebug"
         runInBackground "${APP_NAME}:${APP_VERSION}-php7xdebug"
         ;;
