@@ -4,6 +4,7 @@
 [![npm](https://img.shields.io/badge/node-4.2-brightgreen.svg)]()
 [![npm](https://img.shields.io/badge/php-5.6-brightgreen.svg)]()
 [![npm](https://img.shields.io/badge/php-7.0-brightgreen.svg)]()
+[![npm](https://img.shields.io/badge/php-7.1-brightgreen.svg)]()
 [![npm](https://img.shields.io/badge/mysql-5.7-brightgreen.svg)]()
 
 Maintainer: [Michal Kruczek](https://github.com/partikus)
