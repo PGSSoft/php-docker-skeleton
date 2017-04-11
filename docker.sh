@@ -99,7 +99,7 @@ if [[ $TASK_NAME == '' ]]; then
     echo -e "'build-7' - is running build ant tasks based on php 7"
     echo -e "'build-7-coverage' - is running build ant tasks based on php 7 with code coverage";
     echo -e "'run-7' - is running dev env and attaching tty";
-    echo -e "'run-coverage-7' - is running dev env with php7, xdebug and attaching tty";
+    echo -e "'run-7-coverage' - is running dev env with php7, xdebug and attaching tty";
     echo -e "'build-56' - is running build ant tasks based on php 5.6"
     echo -e "'build-56-coverage' - is running build ant tasks based on php 5.6 with code coverage";
     echo -e "'run-56' - is running dev env and attaching tty php 5.6";
