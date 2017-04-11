@@ -31,3 +31,34 @@ Contributors
 Contributing
 ------------
 Please read more about [Github Flow](https://guides.github.com/introduction/flow/).
+
+Getting started
+---------------
+
+In order to customize docker skeleton:
+
+1. open `.project_name` file and set project name
+2. open `docker.sh` script and set below variables
+
+```
+export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"} # change 'web' if it is required
+export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"} # change 'index.php' if it is required
+export PROJECT_DEV_INDEX_FILE=${PROJECT_DEV_INDEX_FILE:="index_dev.php"} # change 'index_dev.php' if it is required
+```
+
+
+In order to show bash help run command 
+```bash
+$ ./docker.sh
+```
+
+Important functionality:
+
+```bash
+'build-images' - building docker images
+'run' - is running dev env and attaching tty
+'run-coverage' - is running dev env with xdebug and attaching tty
+'build' - is running build ant tasks based on php 7
+'build-coverage' - is running build ant tasks based on php 7 with code coverage
+'build-56' - is running build ant tasks based on php 5.6
+```
