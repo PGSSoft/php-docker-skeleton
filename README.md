@@ -9,7 +9,7 @@
 
 Maintainer: [Michal Kruczek](https://github.com/partikus)
 
-This stack uses: [nginx](https://hub.docker.com/_/nginx/) (lastest), [php-fpm](https://hub.docker.com/_/php/) (5.6, 7.0), [mysql](https://hub.docker.com/_/mysql/) (5.7).
+This stack uses: [nginx](https://hub.docker.com/_/nginx/) (lastest), [php-fpm](https://hub.docker.com/_/php/) (5.6, 7.0, 7.1), [mysql](https://hub.docker.com/_/mysql/) (5.7).
 
 This skeleton can be used to developing app locally or to running tests in Jenkins etc.
 
@@ -34,3 +34,36 @@ Contributors
 Contributing
 ------------
 Please read more about [Github Flow](https://guides.github.com/introduction/flow/).
+
+
+Getting started
+---------------
+
+In order to use this skeleton in existing project please follow the steps:
+
+1. Clone this skeleton from github
+2. Copy following files and directory into your main project directory:
+
+```
+docker
+.gitignore
+docker.sh
+docker-compose.local.yml
+docker-compose.yml
+```
+3. Run commands 
+```bash
+chmod +x docker.sh
+./docker.sh build-images # Will build all images
+./docker.sh run # Will run application with php7.1 and attach tty to php7.1 container
+./docker.sh run-coverage # Will run application with php7.1 and attach tty to php7.1 container with xdebug
+```
+
+In order to run coverage tests:
+
+1. Provide your own `build.xml` file
+2. Run commands
+```bash
+./docker.sh build # Will run ant test inside php7.1 container
+./docker.sh build-coverage # Will run ant test inside php7.1 container with codecoverage
+```

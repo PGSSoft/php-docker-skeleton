@@ -4,7 +4,7 @@ MAINTAINER Michał Kruczek <mkruczek@pgs-soft.com>
 
 COPY ./php.conf /etc/nginx/conf.d/default.conf
 
-ENV PROJECT_NAME demo
+ENV APP_NAME demo
 ENV PROJECT_WEB_DIR web
 ENV PROJECT_INDEX_FILE index.php
 ENV PROJECT_DEV_INDEX_FILE index_dev.php
