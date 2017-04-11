@@ -2,7 +2,6 @@
 
 TASK_NAME=$1;
 
-export PROJECT_NAME=$(cat ./.project_name)
 export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"}
 export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"}
 export PROJECT_DEV_INDEX_FILE=${PROJECT_DEV_INDEX_FILE:="index_dev.php"}
