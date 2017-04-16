@@ -89,19 +89,27 @@ if [[ $TASK_NAME == '' ]]; then
     echo -e "Available commands:";
     echo -e "'build-images' - building docker images";
     echo -e "'build' - is running build ant tasks based on php 7.1";
+    echo -e "'pure-build' - build image php 7.1";
     echo -e "'build-coverage' - is running build ant tasks based on php 7.1 with code coverage";
+    echo -e "'pure-build-coverage' - build image php 7.1 with xdebug";
     echo -e "'run' - is running dev env and attaching tty php 7.1";
     echo -e "'run-coverage' - is running dev env with php7.1, xdebug and attaching tty";
     echo -e "'build-71' - is running build ant tasks based on php 7.1";
+    echo -e "'pure-build-71' - build image php 7.1";
     echo -e "'build-71-coverage' - is running build ant tasks based on php 7.1 with code coverage";
+    echo -e "'pure-build-71-coverage' - build image php 7.1 with xdebug";
     echo -e "'run-71' - is running dev env and attaching tty php 7.1";
     echo -e "'run-71-coverage' - is running dev env with php7.1, xdebug and attaching tty";
-    echo -e "'build-7' - is running build ant tasks based on php 7"
+    echo -e "'build-7' - is running build ant tasks based on php 7";
+    echo -e "'pure-build-7' - build image php 7";
     echo -e "'build-7-coverage' - is running build ant tasks based on php 7 with code coverage";
+    echo -e "'pure-build-7-coverage' - build image php 7 with xdebug";
     echo -e "'run-7' - is running dev env and attaching tty";
     echo -e "'run-7-coverage' - is running dev env with php7, xdebug and attaching tty";
-    echo -e "'build-56' - is running build ant tasks based on php 5.6"
+    echo -e "'build-56' - is running build ant tasks based on php 5.6";
+    echo -e "'pure-build-56' - build image php 5.6";
     echo -e "'build-56-coverage' - is running build ant tasks based on php 5.6 with code coverage";
+    echo -e "'pure-build-56-coverage' - build image php 5.6 with xdebug";
     echo -e "'run-56' - is running dev env and attaching tty php 5.6";
     echo -e "'run-56-coverage' - is running dev env with php5.6, xdebug and attaching tty";
 fi
@@ -110,9 +118,15 @@ case $TASK_NAME in
     'build-images')
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "all"
         ;;
+    'pure-build-56')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php56"
+        ;;
     'build-56')
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php56"
         runBuild "${APP_NAME}:${APP_VERSION}-php56"
+        ;;
+    'pure-build-56-coverage')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php56xdebug"
         ;;
     'build-56-coverage')
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php56xdebug"
@@ -126,9 +140,15 @@ case $TASK_NAME in
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php56xdebug"
         runInBackground "${APP_NAME}:${APP_VERSION}-php56xdebug"
         ;;
+    'pure-build-71' | 'pure-build')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php71"
+        ;;
     'build' | 'build-71')
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php71"
         runBuild "${APP_NAME}:${APP_VERSION}-php71"
+        ;;
+    'pure-build-71-coverage' | 'pure-build-coverage')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php71xdebug"
         ;;
     'build-coverage' | 'build-71-coverage')
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php71xdebug"
@@ -146,9 +166,15 @@ case $TASK_NAME in
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7"
         runBuild "${APP_NAME}:${APP_VERSION}-php7"
         ;;
+    'pure-build-7')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7"
+        ;;
     'build-7-coverage')
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7xdebug"
         runBuild "${APP_NAME}:${APP_VERSION}-php7xdebug"
+        ;;
+    'pure-build-7-coverage')
+        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7xdebug"
         ;;
     'run-7')
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7"
