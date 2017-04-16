@@ -1,13 +1,13 @@
 {
-    "name": "pgs/demo",
-    "version": "0.0.1",
-    "description": "PHP Docker Skeleton",
-    "license": "Prioprietary",
-    "authors": [
-        {
-            "name": "Michal Kruczek",
-            "email": "mkruczek@pgs-soft.com"
-        }
-    ],
-    "require": {}
+  "name": "pgs/demo",
+  "version": "0.0.1",
+  "description": "PHP Docker Skeleton",
+  "license": "Prioprietary",
+  "authors": [
+    {
+      "name": "Michal Kruczek",
+      "email": "mkruczek@pgs-soft.com"
+    }
+  ],
+  "require": {}
 }

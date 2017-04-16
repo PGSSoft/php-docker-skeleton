@@ -13,9 +13,10 @@ php:
     - data
   environment:
     SYMFONY_ENV: test
+    ENABLED_XDEBUG: "${ENABLED_XDEBUG}"
 
 mysql:
   image: mysql:5.7
   environment:
-    MYSQL_ROOT_PASSWORD: ${PROJECT_NAME}
-    MYSQL_DATABASE: ${PROJECT_NAME}
+    MYSQL_ROOT_PASSWORD: ${APP_NAME}
+    MYSQL_DATABASE: ${APP_NAME}
