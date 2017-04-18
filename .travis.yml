@@ -2,24 +2,16 @@ language: bash
 services: docker
 
 env:
-  - PROJECT_COMMAND=build
   - PROJECT_COMMAND=build-coverage
-  - PROJECT_COMMAND=build-71
   - PROJECT_COMMAND=build-71-coverage
-  - PROJECT_COMMAND=build-7
   - PROJECT_COMMAND=build-7-coverage
-  - PROJECT_COMMAND=build-56
   - PROJECT_COMMAND=build-56-coverage
 
 before_script:
   - env | sort
-  - if [[ "$PROJECT_COMMAND" == "build" ]]; then docker pull php:7.1-fpm; fi;
   - if [[ "$PROJECT_COMMAND" == "build-coverage" ]]; then docker pull php:7.1-fpm; fi;
-  - if [[ "$PROJECT_COMMAND" == "build-71" ]]; then docker pull php:7.1-fpm; fi;
   - if [[ "$PROJECT_COMMAND" == "build-71-coverage" ]]; then docker pull php:7.1-fpm; fi;
-  - if [[ "$PROJECT_COMMAND" == "build-7" ]]; then docker pull php:7-fpm; fi;
   - if [[ "$PROJECT_COMMAND" == "build-7-coverage" ]]; then docker pull php:7-fpm; fi;
-  - if [[ "$PROJECT_COMMAND" == "build-56" ]]; then docker pull php:5.6-fpm; fi;
   - if [[ "$PROJECT_COMMAND" == "build-56-coverage" ]]; then docker pull php:5.6-fpm; fi;
 
 script:
