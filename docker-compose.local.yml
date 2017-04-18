@@ -21,7 +21,7 @@ nginx:
   volumes_from:
     - data
   environment:
-    APP_NAME: ${APP_NAME}
+    APP_NAME: ${PROJECT_NAME}
     PROJECT_WEB_DIR: ${PROJECT_WEB_DIR}
     PROJECT_INDEX_FILE: ${PROJECT_INDEX_FILE}
     PROJECT_DEV_INDEX_FILE: ${PROJECT_DEV_INDEX_FILE}
