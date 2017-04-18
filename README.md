@@ -55,7 +55,7 @@ This skeleton can be used to developing app locally or to running tests in Jenki
             </td>
             <td>
                 Running local dev env.<br>
-                Domain is set based on <code>.composer.json</code> <code>name</code property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code> PHP 56
+                Domain is set based on <code>.composer.json</code> <code>name</code> property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code> PHP 56
             </td>
         </tr>
         <tr>
