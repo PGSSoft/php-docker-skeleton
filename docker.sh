@@ -2,7 +2,8 @@
 
 TASK_NAME=$1;
 
-export ENABLED_XDEBUG="OFF"
+export PROJECT_NAME=$(cat ./.project_name)
+export PROJECT_ENABLED_XDEBUG=false
 export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"}
 export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"}
 export PROJECT_DEV_INDEX_FILE=${PROJECT_DEV_INDEX_FILE:="index_dev.php"}
@@ -104,12 +105,12 @@ case $TASK_NAME in
         runBuild "${APP_NAME}:${APP_VERSION}-php56xdebug"
         ;;
     'build-56-coverage')
-        export ENABLED_XDEBUG="ON"
+        export PROJECT_ENABLED_XDEBUG=true
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php56xdebug"
         runBuild "${APP_NAME}:${APP_VERSION}-php56xdebug"
         ;;
     'run-56-coverage')
-        export ENABLED_XDEBUG="ON"
+        export PROJECT_ENABLED_XDEBUG=true
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php56xdebug"
         runInBackground "${APP_NAME}:${APP_VERSION}-php56xdebug"
         ;;
@@ -118,12 +119,12 @@ case $TASK_NAME in
         runBuild "${APP_NAME}:${APP_VERSION}-php71xdebug"
         ;;
     'build-coverage' | 'build-71-coverage')
-        export ENABLED_XDEBUG="ON"
+        export PROJECT_ENABLED_XDEBUG=true
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php71xdebug"
         runBuild "${APP_NAME}:${APP_VERSION}-php71xdebug"
         ;;
     'run-coverage' | 'run-71-coverage')
-        export ENABLED_XDEBUG="ON"
+        export PROJECT_ENABLED_XDEBUG=true
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php71xdebug"
         runInBackground "${APP_NAME}:${APP_VERSION}-php71xdebug"
         ;;
@@ -132,14 +133,9 @@ case $TASK_NAME in
         runBuild "${APP_NAME}:${APP_VERSION}-php7xdebug"
         ;;
     'build-7-coverage')
-        export ENABLED_XDEBUG="ON"
+        export PROJECT_ENABLED_XDEBUG=true
         buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7xdebug"
         runBuild "${APP_NAME}:${APP_VERSION}-php7xdebug"
-        ;;
-    'run-7-coverage')
-        export ENABLED_XDEBUG="ON"
-        buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php7xdebug"
-        runInBackground "${APP_NAME}:${APP_VERSION}-php7xdebug"
         ;;
 esac
 
