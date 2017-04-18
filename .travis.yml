@@ -3,7 +3,6 @@ services: docker
 
 env:
   - PROJECT_COMMAND=build-coverage
-  - PROJECT_COMMAND=build-71-coverage
   - PROJECT_COMMAND=build-7-coverage
   - PROJECT_COMMAND=build-56-coverage
 
