@@ -23,45 +23,45 @@ This skeleton can be used to developing app locally or to running tests in Jenki
     <tbody>
         <tr>
             <td>
-                `build-images`
+                <code>build-images</code>
             </td>
             <td>
                 Build docker images.<br>
-                Image versioning is based on `version` from `composer.json`
+                Image versioning is based on <code>version</code> from <code>composer.json</code>
             </td>
         </tr>
         <tr>
             <td>
-                `run`<br>
-                `run-71`
+                <code>run</code><br>
+                <code>run-71</code>
             </td>
             <td>
                 Running local dev env.<br>
-                Domain is set based on ``.composer.json`` ``name`` property without ``/`` sign, by default ``http://pgsdemo.dev:8000`` PHP 7.1
+                Domain is set based on <code>.composer.json</code> <code>name</code> property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code> PHP 7.1
             </td>
         </tr>
         <tr>
             <td>
-                `run-7`
+                <code>run-7</code>
             </td>
             <td>
                 Running local dev env.<br>
-                Domain is set based on ``.composer.json`` ``name`` property without ``/`` sign, by default ``http://pgsdemo.dev:8000`` PHP 7
+                Domain is set based on <code>.composer.json</code> <code>name</code> property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code> PHP 7
             </td>
         </tr>
         <tr>
             <td>
-                `run-56`
+                <code>run-56</code>
             </td>
             <td>
                 Running local dev env.<br>
-                Domain is set based on ``.composer.json`` ``name`` property without ``/`` sign, by default ``http://pgsdemo.dev:8000`` PHP 56
+                Domain is set based on <code>.composer.json</code> <code>name</code property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code> PHP 56
             </td>
         </tr>
         <tr>
             <td>
-                `build`<br>
-                `build-71`
+                <code>build</code><br>
+                <code>build-71</code>
             </td>
             <td>
                 Running tests on PHP 7.1
@@ -69,7 +69,7 @@ This skeleton can be used to developing app locally or to running tests in Jenki
         </tr>
         <tr>
             <td>
-                `build-7`
+                <code>build-7</code>
             </td>
             <td>
                 Running tests on PHP 7.0
@@ -77,7 +77,7 @@ This skeleton can be used to developing app locally or to running tests in Jenki
         </tr>
         <tr>
             <td>
-                `build-56`
+                <code>build-56</code>
             </td>
             <td>
                 Running tests on PHP 5.6
@@ -85,8 +85,8 @@ This skeleton can be used to developing app locally or to running tests in Jenki
         </tr>
         <tr>
             <td>
-                `build-coverage`<br>
-                `build-71-coverage`
+                <code>build-coverage</code><br>
+                <code>build-71-coverage</code>
             </td>
             <td>
                 Running tests on PHP 7.1 with CodeCoverage(include xdebug)
@@ -94,7 +94,7 @@ This skeleton can be used to developing app locally or to running tests in Jenki
         </tr>
         <tr>
             <td>
-                `build-7-coverage`
+                <code>build-7-coverage</code>
             </td>
             <td>
                 Running tests on PHP 7.0 with CodeCoverage(include xdebug)
@@ -102,7 +102,7 @@ This skeleton can be used to developing app locally or to running tests in Jenki
         </tr>
         <tr>
             <td>
-                `build-56-coverage`
+                <code>build-56-coverage</code>
             </td>
             <td>
                 Running tests on PHP 5.6 with CodeCoverage(include xdebug)
