@@ -1,8 +1,10 @@
 php:
+  image: "${IMAGE_VERSION}"
   entrypoint: "php-fpm"
   command: ""
   environment:
     SYMFONY_ENV: dev
+    PROJECT_XDEBUG_ENABLED: ${PROJECT_XDEBUG_ENABLED}
 
 mysql:
   environment:
@@ -11,7 +13,7 @@ mysql:
     - ./data:/var/lib/mysql
 
 nginx:
-  image: "${APP_NAME}:${APP_VERSION}-nginx"
+  image: "${PROJECT_NAME}:${APP_VERSION}-nginx"
   ports:
     - "8000:80"
   links:
