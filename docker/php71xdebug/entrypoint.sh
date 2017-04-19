@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-echo "PROJECT_ENABLED_XDEBUG = ${PROJECT_ENABLED_XDEBUG}"
-if [ $PROJECT_ENABLED_XDEBUG == false ]; then
+echo "PROJECT_XDEBUG_ENABLED = ${PROJECT_ENABLED_XDEBUG}"
+if [ $PROJECT_XDEBUG_ENABLED == false ]; then
     echo ';zend_extension=xdebug.so' > /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
 fi
 

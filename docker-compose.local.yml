@@ -4,7 +4,7 @@ php:
   command: ""
   environment:
     SYMFONY_ENV: dev
-    ENABLED_XDEBUG: ${ENABLED_XDEBUG}
+    PROJECT_XDEBUG_ENABLED: ${PROJECT_XDEBUG_ENABLED}
 
 mysql:
   environment:

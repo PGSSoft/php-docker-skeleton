@@ -3,7 +3,7 @@
 TASK_NAME=$1;
 
 export PROJECT_NAME=$(cat ./.project_name)
-export PROJECT_ENABLED_XDEBUG=false
+export PROJECT_XDEBUG_ENABLED=false
 export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"}
 export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"}
 export PROJECT_DEV_INDEX_FILE=${PROJECT_DEV_INDEX_FILE:="index_dev.php"}
@@ -68,8 +68,6 @@ function runBuild {
 
 function runInBackground {
     export IMAGE_VERSION=$1
-
-    echo "${IMAGE_VERSION}"
 
     docker-compose -f docker-compose.yml -f docker-compose.local.yml kill > /dev/null 2>&1
     docker-compose -f docker-compose.yml -f docker-compose.local.yml rm -f -v > /dev/null 2>&1
