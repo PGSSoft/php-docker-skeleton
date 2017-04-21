@@ -24,6 +24,8 @@ RUN apt-get -qq update --fix-missing && \
         libkrb5-dev \
         cloc \
         git-core \
+        zip \
+        unzip \
         && rm -rf /var/lib/apt/lists/*
 
 COPY docker-php-pecl-install /usr/local/bin/

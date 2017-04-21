@@ -16,6 +16,24 @@ echo "User ID: $USERID";
 echo -e "\nIMAGE VERSION: $APP_NAME:$APP_VERSION\n";
 declare -i BUILD_STATUS=0;
 
+__DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "${__DIR}"
+
+
+FILES=(
+    'buildImages.sh'
+    'checkContainerExists.sh'
+    'defineVariables.sh'
+    'runBuild.sh'
+    'runInBackground.sh'
+)
+
+
+for FILE in "${FILES[@]}" ; do
+    source "bash/${FILE}"
+done
+
+
 echo -e "All defined variables:\n"
 ( set -o posix ; set ) | grep 'PROJECT|APP'
 
@@ -25,6 +43,7 @@ function imageExists {
         echo - "$IMAGE_NAME already exist"
         return 1;
     fi
+
 
     return 0;
 }
