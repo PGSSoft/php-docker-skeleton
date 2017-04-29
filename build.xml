@@ -6,4 +6,3 @@
         <exec command="ls -la" logoutput="true"/>
     </target>
 </project>
-
