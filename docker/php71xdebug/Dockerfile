@@ -30,13 +30,16 @@ COPY docker-php-pecl-install /usr/local/bin/
 
 RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos \
     && docker-php-ext-install iconv intl mysqli gd mbstring pdo_mysql xsl opcache imap \
-    && docker-php-pecl-install zip xdebug-2.5.0
+    && docker-php-pecl-install zip xdebug-2.5.0 \
+    && chown www-data:www-data /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
 
-RUN curl -sS https://getcomposer.org/installer | php && \
-    mv composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer \
+    && chmod +x /usr/local/bin/composer
 
-RUN pear channel-discover pear.phing.info && \
-    pear install --alldeps phing/phing
+RUN curl -L http://www.phing.info/get/phing-latest.phar -o phing-latest.phar \
+    && mv phing-latest.phar /usr/local/bin/phing \
+    && chmod +x /usr/local/bin/phing
 
 COPY php.ini /usr/local/etc/php
 COPY entrypoint.sh /entrypoint.sh
