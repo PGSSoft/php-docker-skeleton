@@ -59,6 +59,64 @@ This skeleton can be used to developing app locally or to running tests in Jenki
     </tbody>
 </table>
 
+
+## Getting started
+
+In order to add docker skeleton to your project follow the steps below:
+
+1. Clone skeleton from github repository `git clone git@github.com:PGSSoft/php-docker-skeleton.git`
+2. Copy below files from `php-docker-skeleton` folder to your main project folder:
+
+```
+.
+├── docker
+│   ├── nginx
+│   │   ├── Dockerfile
+│   │   ├── entrypoint.sh
+│   │   └── php.conf
+│   ├── php56
+│   │   ├── Dockerfile
+│   │   ├── entrypoint.sh
+│   │   └── php.ini
+│   ├── php56xdebug
+│   │   ├── Dockerfile
+│   │   ├── docker-php-pecl-install
+│   │   ├── entrypoint.sh
+│   │   └── php.ini
+│   ├── php7
+│   │   ├── Dockerfile
+│   │   ├── entrypoint.sh
+│   │   └── php.ini
+│   ├── php71
+│   │   ├── Dockerfile
+│   │   ├── entrypoint.sh
+│   │   └── php.ini
+│   ├── php71xdebug
+│   │   ├── Dockerfile
+│   │   ├── docker-php-pecl-install
+│   │   ├── entrypoint.sh
+│   │   └── php.ini
+│   └── php7xdebug
+│       ├── Dockerfile
+│       ├── docker-php-pecl-install
+│       ├── entrypoint.sh
+│       └── php.ini
+├── .project_name
+├── docker-compose.local.yml
+├── docker-compose.yml
+└── docker.sh
+```
+
+3. Set project name inside file `.project_name`
+4. Customize below lines inside `docker.sh` script:
+```
+export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"} # Project doc_root directory.
+export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"} # Project main index file.
+export PROJECT_DEV_INDEX_FILE=${PROJECT_DEV_INDEX_FILE:="index_dev.php"} # Project dev index file.
+```
+
+5. After that configuration you should be able to run `./docker.sh build-images`
+
 ## Enjoy!
 
 # Authors
