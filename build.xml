@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="demo" default="build">
-    <target name="build" depends="list,-check-failure"/>
-    <target name="list"
-            description="List file structure"
-            unless="list.done">
+    <target name="build" depends="list"/>
+
+    <target name="list" description="List file structure">
         <exec command="ls -la" logoutput="true"/>
-
-        <property name="list.done" value="true"/>
-    </target>
-
-    <target name="-check-failure">
-        <fail message="Testsuit did not finish successfully">
-            <condition>
-                <not>
-                    <equals arg1="list.done" arg2="0"/>
-                </not>
-            </condition>
-        </fail>
     </target>
 </project>
 
