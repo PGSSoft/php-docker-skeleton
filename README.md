@@ -13,17 +13,25 @@ This stack uses: [nginx](https://hub.docker.com/_/nginx/) (lastest), [php-fpm](h
 
 This skeleton can be used to developing app locally or to running tests in Jenkins etc.
 
-### DESCRIPTION OF `docker.sh` ATTRIBUTES.
+### DESCRIPTION OF `docker.sh` USAGE.
+
+```
+./docker.sh build ${PROJECT_PHP_VERSION} ${PROJECT_WITH_COVERAGE} 
+# usage examples
+./docker.sh build 56 true
+./docker.sh build 71 false
+./docker.sh run 71 false
+```
 
 <table>
     <thead>
-        <td>ATTRIBUTE</td>
-        <td>DESCRIPTION</td>
+        <td>Syntax</td>
+        <td>Description</td>
     </thead>
     <tbody>
         <tr>
             <td>
-                <code>build-images</code>
+                <code>images</code>
             </td>
             <td>
                 Build docker images.<br>
@@ -32,96 +40,37 @@ This skeleton can be used to developing app locally or to running tests in Jenki
         </tr>
         <tr>
             <td>
-                <code>run</code><br>
-                <code>run-71</code>
+                <code>run ${PROJECT_PHP_VERSION} ${PROJECT_WITH_COVERAGE}</code>
             </td>
             <td>
                 Running local dev env.<br>
-                Domain is set based on <code>.composer.json</code> <code>name</code> property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code> PHP 7.1
+                Domain is set based on <code>.composer.json</code> <code>name</code> property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code>
             </td>
         </tr>
         <tr>
             <td>
-                <code>run-7</code>
+                <code>build ${PROJECT_PHP_VERSION} ${PROJECT_WITH_COVERAGE}</code>
             </td>
             <td>
                 Running local dev env.<br>
-                Domain is set based on <code>.composer.json</code> <code>name</code> property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code> PHP 7
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>run-56</code>
-            </td>
-            <td>
-                Running local dev env.<br>
-                Domain is set based on <code>.composer.json</code> <code>name</code> property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code> PHP 56
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>build</code><br>
-                <code>build-71</code>
-            </td>
-            <td>
-                Running tests on PHP 7.1
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>build-7</code>
-            </td>
-            <td>
-                Running tests on PHP 7.0
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>build-56</code>
-            </td>
-            <td>
-                Running tests on PHP 5.6
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>build-coverage</code><br>
-                <code>build-71-coverage</code>
-            </td>
-            <td>
-                Running tests on PHP 7.1 with CodeCoverage(include xdebug)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>build-7-coverage</code>
-            </td>
-            <td>
-                Running tests on PHP 7.0 with CodeCoverage(include xdebug)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <code>build-56-coverage</code>
-            </td>
-            <td>
-                Running tests on PHP 5.6 with CodeCoverage(include xdebug)
+                Domain is set based on <code>.composer.json</code> <code>name</code> property without <code>/</code> sign, by default <code>http://pgsdemo.dev:8000</code>
             </td>
         </tr>
     </tbody>
 </table>
 
-
 ## Enjoy!
 
-Authors
--------
+# Authors
  - [Michal Kruczek](https://github.com/partikus/) - <mkruczek@pgs-soft.com>
 
-Contributors
-------------
+# Contributors
  - Jan Hryniuk <jhryniuk@pgs-soft.com>
 
-Contributing
-------------
+# Contributing
+
 Please read more about [Github Flow](https://guides.github.com/introduction/flow/).
+
+### Docker for Mac
+
+Due to OSx's file sync is extremaly slow we suggest to use [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs) or [docker-sync.io](http://docker-sync.io/)

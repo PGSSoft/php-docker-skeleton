@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="demo" default="build">
-    <target name="build"
-            depends="list"
-    />
+    <target name="build" depends="list"/>
 
-    <target name="list"
-            unless="list.done"
-            description="List file structure">
-        <exec executable="ls">
-            <arg value="-l"/>
-            <arg value="-a"/>
-        </exec>
-
-        <property name="list.done" value="true"/>
+    <target name="list" description="List file structure">
+        <exec command="ls -la" logoutput="true"/>
     </target>
- </project>
+</project>
 
