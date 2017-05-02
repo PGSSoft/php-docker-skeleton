@@ -2,9 +2,8 @@
 
 function runBuild {
     export IMAGE_VERSION=$1
-
+    export PROJECT_XDEBUG_ENABLED=${2:-false}
     BUILD_OUTPUT=$(docker-compose up php)
-
     docker-compose kill > /dev/null 2>&1
     docker-compose rm -f -v > /dev/null 2>&1
 
