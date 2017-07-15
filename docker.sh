@@ -4,8 +4,8 @@ PROJECT_TASK_NAME=$1;
 PROJECT_PHP_VERSION=${2:-71};
 PROJECT_WITH_COVERAGE=${3:-false};
 
-export APP_NAME=$(echo $(cat composer.json | grep name | head -1 | awk -F: '{ print $2 }' | sed 's/[",\r]//g' | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]'))
-export APP_VERSION=$(echo $(cat composer.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",\r]//g'))
+export APP_NAME="pgsdemo"
+export APP_VERSION="0.0.1"
 export PROJECT_NAME="$APP_NAME"
 export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"}
 export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"}
