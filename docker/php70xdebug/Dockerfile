@@ -2,10 +2,7 @@ FROM php:7.0-fpm
 
 MAINTAINER Michał Kruczek <mkruczek@pgs-soft.com>
 
-ARG USERID=1000
-
-RUN usermod -u $USERID www-data && \
-    mkdir -p /var/www && \
+RUN mkdir -p /var/www && \
     chown -R www-data:www-data /var/www && \
     chmod 777 -R /var/www
 
