@@ -11,8 +11,6 @@ export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"}
 export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"}
 export PROJECT_DEV_INDEX_FILE=${PROJECT_DEV_INDEX_FILE:="index_dev.php"}
 
-USERID=$(id -u);
-echo "User ID: $USERID";
 echo -e "\nIMAGE VERSION: $APP_NAME:$APP_VERSION\n";
 declare -i BUILD_STATUS=0;
 
@@ -32,22 +30,21 @@ function imageExists {
 function buildImages {
     NAME=$1
     VERSION=$2
-    USERID=${3:-1000}
-    PHP=${4-:"all"}
+    PHP=${3-:"all"}
 
     imageExists "${NAME}:${VERSION}-php56xdebug"
     if [[ $? == 0 ]] && [[ "$PHP" == "php56xdebug" || "$PHP" == "all" ]]; then
-        docker build -t "${NAME}:${VERSION}-php56xdebug" --build-arg "USERID=$USERID" docker/php56xdebug
+        docker build -t "${NAME}:${VERSION}-php56xdebug" docker/php56xdebug
     fi
 
     imageExists "${NAME}:${VERSION}-php70xdebug"
     if [[ $? == 0 ]] && [[ "$PHP" == "php70xdebug" || "$PHP" == "all" ]]; then
-        docker build -t "${NAME}:${VERSION}-php70xdebug" --build-arg "USERID=$USERID" docker/php70xdebug
+        docker build -t "${NAME}:${VERSION}-php70xdebug" docker/php70xdebug
     fi
 
     imageExists "${NAME}:${VERSION}-php71xdebug"
     if [[ $? == 0 ]] && [[ "$PHP" == "php71xdebug" || "$PHP" == "all" ]]; then
-        docker build -t "${NAME}:${VERSION}-php71xdebug" --build-arg "USERID=$USERID" docker/php71xdebug
+        docker build -t "${NAME}:${VERSION}-php71xdebug" docker/php71xdebug
     fi
 
     imageExists "${NAME}:${VERSION}-nginx"
@@ -107,16 +104,16 @@ if [ $PROJECT_WITH_COVERAGE != true ] && [ $PROJECT_WITH_COVERAGE != false ]; th
 fi
 
 if [[ $PROJECT_TASK_NAME == 'images' ]]; then
-    buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "all"
+    buildImages "${APP_NAME}" "${APP_VERSION}" "all"
 fi
 
 if [[ $PROJECT_TASK_NAME == 'build' ]]; then
-    buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php${PROJECT_PHP_VERSION}xdebug"
+    buildImages "${APP_NAME}" "${APP_VERSION}" "php${PROJECT_PHP_VERSION}xdebug"
     runBuild "${APP_NAME}:${APP_VERSION}-php${PROJECT_PHP_VERSION}xdebug" $PROJECT_WITH_COVERAGE
 fi
 
 if [[ $PROJECT_TASK_NAME == 'run' ]]; then
-    buildImages "${APP_NAME}" "${APP_VERSION}" "${USERID}" "php${PROJECT_PHP_VERSION}xdebug"
+    buildImages "${APP_NAME}" "${APP_VERSION}" "php${PROJECT_PHP_VERSION}xdebug"
     runInBackground "${APP_NAME}:${APP_VERSION}-php${PROJECT_PHP_VERSION}xdebug" $PROJECT_WITH_COVERAGE
 fi
 
