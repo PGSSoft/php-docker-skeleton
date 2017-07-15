@@ -13,7 +13,7 @@ mysql:
     - ./data:/var/lib/mysql
 
 nginx:
-  image: "${PROJECT_NAME}:${APP_VERSION}-nginx"
+  image: "${APP_NAME}:${APP_VERSION}-nginx"
   ports:
     - "8000:80"
   links:
