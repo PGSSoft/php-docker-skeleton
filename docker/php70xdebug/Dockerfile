@@ -29,8 +29,8 @@ RUN apt-get -qq update --fix-missing && \
 COPY docker-php-pecl-install /usr/local/bin/
 
 RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos \
-    && docker-php-ext-install iconv intl mysqli gd mbstring pdo_mysql xsl opcache imap \
-    && docker-php-pecl-install zip xdebug-2.4.0RC4 \
+    && docker-php-ext-install iconv intl mysqli gd mbstring pdo_mysql xsl opcache imap zip \
+    && docker-php-pecl-install xdebug-2.5.5 \
     && chown www-data:www-data /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
 
 RUN curl -sS https://getcomposer.org/installer | php \
