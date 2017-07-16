@@ -13,6 +13,8 @@ php:
     - data
   environment:
     PROJECT_XDEBUG_ENABLED: ${PROJECT_XDEBUG_ENABLED}
+    PROJECT_USER_ID: ${PROJECT_USER_ID}
+    PROJECT_GROUP_ID: ${PROJECT_GROUP_ID}
 
 mysql:
   image: mysql:5.7

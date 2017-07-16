@@ -3,11 +3,10 @@ FROM php:7.1-fpm
 MAINTAINER Michał Kruczek <mkruczek@pgs-soft.com>
 
 RUN mkdir -p /var/www && \
-    chown -R www-data:www-data /var/www && \
     chmod 777 -R /var/www
 
 RUN apt-get -qq update --fix-missing && \
-    apt-get -q install -y \
+    apt-get -qq install -y \
         zlib1g-dev \
         libicu-dev \
         g++ \
@@ -43,6 +42,5 @@ COPY entrypoint.sh /entrypoint.sh
 
 VOLUME /var/www
 WORKDIR /var/www
-USER www-data
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
