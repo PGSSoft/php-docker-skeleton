@@ -10,6 +10,8 @@ export PROJECT_NAME="$APP_NAME"
 export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"}
 export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"}
 export PROJECT_DEV_INDEX_FILE=${PROJECT_DEV_INDEX_FILE:="index_dev.php"}
+UUID=$(cat /proc/sys/kernel/random/uuid)
+export COMPOSE_PROJECT_NAME="${APP_NAME}-${UUID}"
 
 echo -e "\nIMAGE VERSION: $APP_NAME:$APP_VERSION\n";
 declare -i BUILD_STATUS=0;

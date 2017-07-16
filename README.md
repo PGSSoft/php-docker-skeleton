@@ -59,6 +59,12 @@ This skeleton can be used to developing app locally or to running tests in Jenki
     </tbody>
 </table>
 
+## Continuous Integration
+
+To simplify integration with [Jenkins](https://jenkins.io/) tool the project provides predefined [Jenkins's pipeline](Jenkinsfile) 
+
+![Jenkins Pipeline](docs/jenkinsfile.png)
+
 ## Enjoy!
 
 # Authors
