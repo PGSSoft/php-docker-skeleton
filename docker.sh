@@ -5,11 +5,14 @@ PROJECT_PHP_VERSION=${2:-71};
 PROJECT_WITH_COVERAGE=${3:-false};
 
 export APP_NAME="pgsdemo"
-export APP_VERSION="0.0.1"
+export APP_VERSION="0.0.2"
+
 export PROJECT_NAME="$APP_NAME"
 export PROJECT_WEB_DIR=${PROJECT_WEB_DIR:="web"}
 export PROJECT_INDEX_FILE=${PROJECT_INDEX_FILE:="index.php"}
 export PROJECT_DEV_INDEX_FILE=${PROJECT_DEV_INDEX_FILE:="index_dev.php"}
+export PROJECT_USER_ID=$(id -u)
+export PROJECT_GROUP_ID=$(id -g)
 UUID=$(cat /proc/sys/kernel/random/uuid)
 export COMPOSE_PROJECT_NAME="${APP_NAME}-${UUID}"
 
